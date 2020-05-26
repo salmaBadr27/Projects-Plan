@@ -7,11 +7,10 @@ const NavBar = () => {
 	return (
 		<nav className="nav-wrapper purple lighten-1">
 			<div className="container">
-				<Link to="/" class=" brand-logo ">
-					<i class="Large material-icons">blur_on</i>
-					Salma Plan
+				<Link to="/dashboard" className=" brand-logo ">
+					<i className="Large material-icons">assignment</i>
+					Projects Plan
 				</Link>
-
 				<SignedInLinks />
 				<SignedOutLinks />
 			</div>
