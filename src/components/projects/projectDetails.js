@@ -1,34 +1,47 @@
 import React from "react";
+import { connect } from "react-redux";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 const ProjectDetails = (props) => {
-	const id = props.match.params.id;
-	console.log(id);
-
-	return (
-		<div className="container section project-details">
-			<div className="card z-depth-0">
-				<div className="card-content">
-					<span className="card-title purple-text">Project Title</span>
-					<p>
-						It is a long established fact that a reader will be distracted by
-						the readable content of a page when looking at its layout. The point
-						of using Lorem Ipsum is that it has a more-or-less normal
-						distribution of letters, as opposed to using 'Content here, content
-						here', making it look like readable English. Many desktop publishing
-						packages and web page editors now use Lorem Ipsum as their default
-						model text, and a search for 'lorem ipsum' will uncover many web
-						sites still in their infancy. Various versions have evolved over the
-						years, sometimes by accident, sometimes on purpose (injected humour
-						and the like).
-					</p>
-				</div>
-				<div className="card-action grey lighten-4 purple-text">
-					<div>Posted by salma Badr</div>
-					<div>2nd septemper, 2am</div>
+	const { project } = props;
+	if (project) {
+		return (
+			<div className="container section project-details">
+				<div className="card z-depth-0">
+					<div className="card-content">
+						<span className="card-title purple-text">{project.title}</span>
+						<p>{project.details}.</p>
+					</div>
+					<div className="card-action grey lighten-4 purple-text">
+						<div>
+							Posted by {project.authorFirstName} {project.authorSecondName}
+						</div>
+						<div>2nd sep , 2 am</div>
+					</div>
 				</div>
 			</div>
-		</div>
-	);
+		);
+	} else {
+		return (
+			<div className="container center">
+				<p>Loading project...</p>
+			</div>
+		);
+	}
 };
 
-export default ProjectDetails;
+const mapStateToProps = (state, ownProps) => {
+	// console.log(state);
+	const id = ownProps.match.params.id;
+	const projects = state.firestore.data.projects;
+	const project = projects ? projects[id] : null;
+	return {
+		project: project,
+	};
+};
+
+export default compose(
+	firestoreConnect([{ collection: "projects" }]), // or { collection: 'todos' }
+	connect(mapStateToProps)
+)(ProjectDetails);
