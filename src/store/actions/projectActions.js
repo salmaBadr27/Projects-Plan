@@ -6,14 +6,16 @@ export const createProject = (project) => {
 
 		//firestore reference
 		const fireStoreRef = getFirestore();
+		const profile = getState().firebase.profile;
+		const authorId = getState().firebase.auth.uid;
 		//add functionality
 		fireStoreRef
 			.collection("projects")
 			.add({
 				...project,
-				authFirestName: "salma",
-				authSecondName: "badr",
-				authId: 123,
+				authorFirstName: profile.firstName,
+				authorLastName: profile.lastName,
+				authorId: authorId,
 				createdAt: new Date(),
 			})
 			.then(() => {

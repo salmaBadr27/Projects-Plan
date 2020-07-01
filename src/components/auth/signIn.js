@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import signin from "../img/signin.jpg";
+import { connect } from "react-redux";
+import { signIn } from "../../store/actions/authActions";
+import { Redirect } from "react-router-dom";
 
-class signIn extends Component {
+class SignIn extends Component {
 	state = {
 		email: "",
 		password: "",
@@ -14,15 +17,20 @@ class signIn extends Component {
 	};
 	handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state);
+		this.props.signIn(this.state);
 	};
 
 	render() {
+		const { authError, auth } = this.props;
+		if (auth.uid) return <Redirect to="/" />;
 		return (
 			<div className="container ">
 				<div className="card row">
 					<div className="  col s12 m6">
 						<form onSubmit={this.handleSubmit} className="white ">
+							<div className="purple-text center">
+								{authError ? <p>{authError}</p> : null}
+							</div>
 							<h5 className="purple-text text-darken-3">Sign In</h5>
 							<div className="input-field"></div>
 							<label htmlFor="email">Email</label>
@@ -49,5 +57,16 @@ class signIn extends Component {
 		);
 	}
 }
+const mapStateToProps = (state) => {
+	return {
+		authError: state.auth.authError,
+		auth: state.firebase.auth,
+	};
+};
+const mapDispatchToProps = (dispatch) => {
+	return {
+		signIn: (creds) => dispatch(signIn(creds)),
+	};
+};
 
-export default signIn;
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import create from "../img/create.png";
 import { connect } from "react-redux";
 import { createProject } from "../../store/actions/projectActions";
+import { Redirect } from "react-router-dom";
+
 class CreateProject extends Component {
 	state = {
 		title: "",
@@ -16,9 +18,13 @@ class CreateProject extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.props.createProject(this.state);
+		this.props.history.push("/");
 	};
 
 	render() {
+		const { auth } = this.props;
+
+		if (!auth.uid) return <Redirect to="/signin" />;
 		return (
 			<div className="container">
 				<div className=" card row">
@@ -63,4 +69,9 @@ const mapDispatchToProps = (dispatch) => {
 		createProject: (project) => dispatch(createProject(project)),
 	};
 };
-export default connect(null, mapDispatchToProps)(CreateProject);
+const mapStateToProps = (state) => {
+	return {
+		auth: state.firebase.auth,
+	};
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CreateProject);
