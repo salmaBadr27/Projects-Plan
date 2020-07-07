@@ -5,11 +5,12 @@ const Notifications = (props) => {
 	const { notifications } = props;
 	return (
 		<div className="section">
+			<h4 className="center purple-text">Notifications</h4>
 			<div className="card z-depth-0">
 				<div className="card-content">
 					<span className="card-title">
 						Notifications{" "}
-						<span class="new badge white">
+						<span className="new badge white">
 							<i className="small material-icons purple-text">notifications</i>
 						</span>
 						{/*  */}
