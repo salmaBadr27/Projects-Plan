@@ -1,12 +1,12 @@
 import React from "react";
 import ProjectSummary from "./projectSummary";
 import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import { firestoreConnect } from "react-redux-firebase";
-import { compose } from "redux";
+// import { connect } from "react-redux";
+// import { firestoreConnect } from "react-redux-firebase";
+// import { compose } from "redux";
 
 const ProjectsList = ({ projects }) => {
-	// console.log(props);
+	// console.log(projects);
 	// const { projects } = props;
 	// const [searchTerm, setSearchTerm] = React.useState("");
 	// const [searchResults, setSearchResults] = React.useState([]);

@@ -64,7 +64,7 @@ textarea.materialize-textarea:focus:not([readonly]) {
 	color: rgba(175, 26, 138, 0.87);
 
 	display: block;
-	font-size: 20px;
+	font-size: 14px;
 	font-weight: 500;
 	height: 48px;
 	line-height: 48px;
@@ -79,4 +79,36 @@ textarea.materialize-textarea:focus:not([readonly]) {
 }
 .grey.darken-0 {
 	border-radius: 20px;
+}
+
+.modal-content {
+	font-size: 20px;
+	color: #000;
+	background-color: #f9cbcf;
+}
+.modal-content h4 {
+	color: purple;
+}
+.modal-footer {
+	background-color: purple;
+}
+.modal-footer .btn-flat {
+	color: #fff;
+	background-color: gray;
+	border-radius: 20px;
+	margin-left: 10px;
+}
+
+.modal-footer.btn {
+	margin-right: 10px;
+}
+
+a.purple-text:disabled {
+	cursor: not-allowed;
+}
+
+.btn.purple.lighten-1.z-depth-0.white-text.center {
+	border-radius: 20px;
+	width: 145px;
+	font-weight: bold;
 }

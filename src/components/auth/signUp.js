@@ -51,14 +51,14 @@ class SignUp extends Component {
 							<label htmlFor="lastname">Last Name</label>
 							<input type="text" id="lastName" onChange={this.handleChange} />
 							<div className="input-field center">
-								<button className="  btn grey lighten-1 z-depth-0 purple-text center">
+								<button className="btn purple lighten-1 z-depth-0 white-text center">
 									SignUp
 								</button>
 							</div>
 						</form>
 					</div>
 					<div className="col s12 m5">
-						<img className="materialboxed" src={signup} alt="" />
+						<img className="materialboxed responsive-img" src={signup} alt="" />
 					</div>
 				</div>
 			</div>

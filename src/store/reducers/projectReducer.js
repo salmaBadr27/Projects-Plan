@@ -1,21 +1,31 @@
 const initState = {
-	projects: [
-		{ id: "1", title: "help me find peach", details: "blah blah blah" },
-		{ id: "2", title: "collect all the stars", details: "blah blah blah" },
-		{ id: "3", title: "egg hunt with yoshi", details: "blah blah blah" },
-	],
+	projects: [],
+	Err: "",
 };
 
 const projectReducer = (state = initState, action) => {
 	switch (action.type) {
 		case "ADD_PROJECT":
-			console.log("done", action.project);
+			// console.log("done", action.projects);
 			return state;
+
 		case "CREATE_PROJECT_ERROR":
-			console.log("ERR", action.error);
+			// console.log("ERR", action.error);
 			return state;
+		case "DELETE_PROJECT_SUCCESS":
+			// console.log("delsucceded", action.projects);
+			return {
+				...state,
+				projects: action.projects,
+			};
+		case "DELETE_PROJECT_ERROR":
+			return {
+				...state,
+				Err: action.error,
+			};
 		default:
 			return state;
 	}
 };
+
 export default projectReducer;
