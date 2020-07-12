@@ -52,3 +52,23 @@ export const deleteProject = (projectId) => {
 			});
 	};
 };
+export const searchProject = (searchTerm) => {
+	return (dispatch, getState, { getFirebase, getFirestore }) => {
+		const fireStoreRef = getFirestore();
+
+		var projects = getState().firestore.ordered.projects;
+		console.log(projects);
+		const projectsArray = Object.keys(projects).map((i) => projects[i]);
+		const results = projectsArray.filter(function (project) {
+			return project.title.toLowerCase().includes(searchTerm);
+		});
+
+		if (results) {
+			projects = results;
+			console.log(projects);
+			dispatch({ type: "SEARCH_PROJECT_SUCCESS", projects });
+		}
+
+		dispatch({ type: "SEARCH_PROJECT_FAIL", msg: "no projects found" });
+	};
+};

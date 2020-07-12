@@ -50,14 +50,19 @@ class CreateProject extends Component {
 							></textarea>
 
 							<div className="input-field center">
-								<button className="btn grey lighten-1 z-depth-0 purple-text center">
+								<button className="btn purple lighten-1 z-depth-0 white-text center">
 									Create
 								</button>
 							</div>
 						</form>
 					</div>
-					<div className="col s12 m5">
-						<img className="materialboxed" width="300" src={create} alt="" />
+					<div className="col s12 m5 center">
+						<img
+							className="materialboxed responsive-img"
+							width="300"
+							src={create}
+							alt=""
+						/>
 					</div>
 				</div>
 			</div>

@@ -19,8 +19,6 @@ class ProjectDetails extends Component {
 
 		if (!auth.uid) return <Redirect to="/signin" />;
 		if (project) {
-			// console.log(project.authorId);
-			// console.log(auth.uid);
 			return (
 				<div className="container section project-details">
 					<div className="card z-depth-0">
@@ -42,7 +40,7 @@ class ProjectDetails extends Component {
 							<Link to="#!" className="purple-text">
 								<button
 									className="btn grey darken-0"
-									disabled={project.authorId !== auth.uid ? true : ""}
+									disabled={project.authorId !== auth.uid ? true : false}
 									node="button"
 								>
 									Edit
@@ -52,7 +50,7 @@ class ProjectDetails extends Component {
 								className="btn red darken-4 modal-trigger"
 								href="#modal1"
 								node="button"
-								disabled={project.authorId !== auth.uid ? true : ""}
+								disabled={project.authorId !== auth.uid ? true : false}
 							>
 								Delete
 							</Button>

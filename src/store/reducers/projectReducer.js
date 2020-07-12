@@ -23,6 +23,17 @@ const projectReducer = (state = initState, action) => {
 				...state,
 				Err: action.error,
 			};
+		case "SEARCH_PROJECT_SUCCESS":
+			console.log("search", action.projects);
+			return {
+				...state,
+				projects: action.projects,
+			};
+		case "SEARCH_PROJECT_FAIL":
+			return {
+				...state,
+				Err: action.msg,
+			};
 		default:
 			return state;
 	}

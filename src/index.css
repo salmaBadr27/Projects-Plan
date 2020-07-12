@@ -40,8 +40,8 @@ input[type="text"]:not(.browser-default):focus:not([readonly]),
 input[type="email"]:not(.browser-default):focus:not([readonly]),
 input[type="password"]:not(.browser-default):focus:not([readonly]),
 textarea.materialize-textarea:focus:not([readonly]) {
-	border-color: purple;
-	box-shadow: none;
+	border-color: purple !important;
+	box-shadow: none !important;
 }
 
 .loading {
@@ -111,4 +111,50 @@ a.purple-text:disabled {
 	border-radius: 20px;
 	width: 145px;
 	font-weight: bold;
+}
+
+.tabs.tab-demo {
+	background-color: #ab47bc;
+	color: #fff;
+}
+.tabs .tab a {
+	color: #fff !important;
+	font-size: 20px !important;
+	text-transform: capitalize !important;
+}
+
+span.card-title {
+	font-weight: normal !important;
+	text-transform: capitalize !important;
+}
+
+ul.pagination {
+	text-align: center !important;
+}
+
+.pagination li.active {
+	background-color: #000 !important;
+}
+
+div.input-field.col {
+	width: 88% !important;
+}
+.input-field .prefix.active {
+	color: #ab47bc !important;
+}
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+	color: #ab47bc !important;
+}
+.autocomplete-content li .highlight {
+	color: ab47bc !important;
+}
+
+img.right.circle {
+	display: none !important;
+}
+
+.autocomplete-content.dropdown-content {
+	width: 88% !important;
 }
