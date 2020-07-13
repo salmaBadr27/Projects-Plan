@@ -33,9 +33,7 @@ class Dashboard extends Component {
 
 	render() {
 		const { projects, auth, notifications, isLoaded } = this.props;
-
 		if (!auth.uid) return <Redirect to="/signin" />;
-
 		if (isLoaded) {
 			return (
 				<div className="row">

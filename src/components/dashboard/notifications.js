@@ -8,10 +8,10 @@ const Notifications = (props) => {
 			{/* <h4 className="center purple-text">Notifications</h4> */}
 			<div className="card z-depth-0">
 				<div className="card-content">
-					<span className="card-title purple-text">
+					<span className="card-title black-text">
 						Notifications{" "}
 						<span className="new badge white">
-							<i className="small material-icons black-text">notifications</i>
+							<i className="small material-icons purple-text">notifications</i>
 						</span>
 						{/*  */}
 					</span>

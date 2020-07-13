@@ -2,12 +2,19 @@ import React from "react";
 import ProjectSummary from "./projectSummary";
 import { Link } from "react-router-dom";
 import { Tab, Tabs } from "react-materialize";
+import moment from "moment";
 
 const ProjectsList = ({ projects, auth }) => {
-	var myProjects;
+	var myProjects, oldestProjects, newestProjects;
 	if (projects) {
 		myProjects = projects.filter(function (project) {
 			return project.authorId == auth.uid;
+		});
+		newestProjects = projects.slice().sort((a, b) => {
+			return b.createdAt.seconds - a.createdAt.seconds;
+		});
+		oldestProjects = projects.slice().sort((a, b) => {
+			return a.createdAt.seconds - b.createdAt.seconds;
 		});
 	}
 
@@ -23,7 +30,6 @@ const ProjectsList = ({ projects, auth }) => {
 						swipeable: false,
 					}}
 					title="All Projects"
-					className="myTab"
 				>
 					{projects &&
 						projects.map((project) => {
@@ -41,8 +47,7 @@ const ProjectsList = ({ projects, auth }) => {
 						responsiveThreshold: Infinity,
 						swipeable: false,
 					}}
-					title="Your Projects"
-					className="myTab"
+					title="My Projects"
 				>
 					{myProjects && myProjects.length !== 0 ? (
 						myProjects.map((myProject) => {
@@ -55,12 +60,46 @@ const ProjectsList = ({ projects, auth }) => {
 					) : (
 						<div className="card z-depth-0 project-summary">
 							<div className="card-content purple-text text-darken-3">
-								<span className="card-title">
-									You Dont Have Any Projects Yet !
-								</span>
+								<span className="card-title">No Projects Founded 😢</span>
 							</div>
 						</div>
 					)}
+				</Tab>
+				<Tab
+					options={{
+						duration: 300,
+						onShow: null,
+						responsiveThreshold: Infinity,
+						swipeable: false,
+					}}
+					title="Oldest"
+				>
+					{oldestProjects &&
+						oldestProjects.map((project) => {
+							return (
+								<Link to={"/project/" + project.id} key={project.id}>
+									<ProjectSummary project={project} />
+								</Link>
+							);
+						})}
+				</Tab>
+				<Tab
+					options={{
+						duration: 300,
+						onShow: null,
+						responsiveThreshold: Infinity,
+						swipeable: false,
+					}}
+					title="Newst"
+				>
+					{newestProjects &&
+						newestProjects.map((project) => {
+							return (
+								<Link to={"/project/" + project.id} key={project.id}>
+									<ProjectSummary project={project} />
+								</Link>
+							);
+						})}
 				</Tab>
 			</Tabs>
 		</div>

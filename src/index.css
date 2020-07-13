@@ -122,6 +122,9 @@ a.purple-text:disabled {
 	font-size: 20px !important;
 	text-transform: capitalize !important;
 }
+.tabs .tab a.active {
+	background-color: #000 !important;
+}
 
 span.card-title {
 	font-weight: normal !important;
@@ -164,4 +167,8 @@ img.right.circle {
 }
 .progress .indeterminate {
 	background-color: #e7a0a6 !important;
+}
+
+#searchTerm::placeholder {
+	color: #000;
 }
