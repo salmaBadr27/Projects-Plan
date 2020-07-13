@@ -49,7 +49,9 @@ function AuthIsLoaded({ children }) {
 		return (
 			<div className="container loading">
 				<div className="purple-text center-wrapper">
-					<h1 className="center-align">Loading..</h1>.
+					<div className="progress">
+						<div className="indeterminate"></div>
+					</div>
 				</div>
 			</div>
 		);

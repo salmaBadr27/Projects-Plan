@@ -158,3 +158,10 @@ img.right.circle {
 .autocomplete-content.dropdown-content {
 	width: 88% !important;
 }
+
+.progress {
+	background-color: #ab47bc !important;
+}
+.progress .indeterminate {
+	background-color: #e7a0a6 !important;
+}
