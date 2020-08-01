@@ -6,7 +6,6 @@ import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
 import { Icon, Autocomplete } from "react-materialize";
-import BackToTop from "react-back-to-top-button";
 
 class Dashboard extends Component {
 	state = {
@@ -67,14 +66,6 @@ class Dashboard extends Component {
 							}
 							auth={auth}
 						/>
-						{/* <BackToTop
-							showOnScrollUp
-							showAt={200}
-							speed={1500}
-							easing="easeInOutQuint"
-						>
-							<i className="material-icons">arrow_upward</i>
-						</BackToTop> */}
 					</div>
 				</div>
 			);
