@@ -15,7 +15,7 @@ class ProjectDetails extends Component {
 	};
 
 	render() {
-		const { project, auth } = this.props;
+		const { project, auth, projectId } = this.props;
 
 		if (!auth.uid) return <Redirect to="/signin" />;
 		if (project) {
@@ -37,7 +37,7 @@ class ProjectDetails extends Component {
 								<button className="btn grey darken-4">back</button>
 							</Link>
 
-							<Link to="#!" className="purple-text">
+							<Link to={`/edit/${projectId}`} className="purple-text">
 								<button
 									className="btn grey darken-0"
 									disabled={project.authorId !== auth.uid ? true : false}

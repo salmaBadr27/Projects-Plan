@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import Notifications from "./notifications";
 import ProjectLists from "../projects/projectsList";
 import { connect } from "react-redux";
 import { firestoreConnect } from "react-redux-firebase";
 import { compose } from "redux";
 import { Redirect } from "react-router-dom";
-import { Pagination, Icon, Autocomplete } from "react-materialize";
+import { Icon, Autocomplete } from "react-materialize";
+import BackToTop from "react-back-to-top-button";
 
 class Dashboard extends Component {
 	state = {
@@ -67,14 +67,14 @@ class Dashboard extends Component {
 							}
 							auth={auth}
 						/>
-						<Pagination
-							center
-							activePage={1}
-							items={10}
-							leftBtn={<Icon>chevron_left</Icon>}
-							maxButtons={8}
-							rightBtn={<Icon>chevron_right</Icon>}
-						/>
+						{/* <BackToTop
+							showOnScrollUp
+							showAt={200}
+							speed={1500}
+							easing="easeInOutQuint"
+						>
+							<i className="material-icons">arrow_upward</i>
+						</BackToTop> */}
 					</div>
 				</div>
 			);
@@ -102,7 +102,7 @@ const mapStateToProps = (state) => {
 export default compose(
 	firestoreConnect([
 		{ collection: "projects", orderBy: ["createdAt", "desc"] },
-		{ collection: "notifications", limit: 3, orderBy: ["time", "desc"] },
+		{ collection: "notifications", limit: 10, orderBy: ["time", "desc"] },
 	]),
 	connect(mapStateToProps)
 )(Dashboard);

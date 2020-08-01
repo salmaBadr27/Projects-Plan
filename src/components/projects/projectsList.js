@@ -2,10 +2,10 @@ import React from "react";
 import ProjectSummary from "./projectSummary";
 import { Link } from "react-router-dom";
 import { Tab, Tabs } from "react-materialize";
-import moment from "moment";
 
 const ProjectsList = ({ projects, auth }) => {
 	var myProjects, oldestProjects, newestProjects;
+	console.log(projects);
 	if (projects) {
 		myProjects = projects.filter(function (project) {
 			return project.authorId == auth.uid;
@@ -17,7 +17,6 @@ const ProjectsList = ({ projects, auth }) => {
 			return a.createdAt.seconds - b.createdAt.seconds;
 		});
 	}
-
 	return (
 		<div className="project-list section">
 			<Tabs className="tab-demo z-depth-1">
@@ -31,14 +30,21 @@ const ProjectsList = ({ projects, auth }) => {
 					}}
 					title="All Projects"
 				>
-					{projects &&
+					{projects && projects.length !== 0 ? (
 						projects.map((project) => {
 							return (
 								<Link to={"/project/" + project.id} key={project.id}>
 									<ProjectSummary project={project} />
 								</Link>
 							);
-						})}
+						})
+					) : (
+						<div className="card z-depth-0 project-summary">
+							<div className="card-content purple-text text-darken-3">
+								<span className="card-title">No Projects Founded 😢</span>
+							</div>
+						</div>
+					)}
 				</Tab>
 				<Tab
 					options={{
@@ -74,14 +80,21 @@ const ProjectsList = ({ projects, auth }) => {
 					}}
 					title="Oldest"
 				>
-					{oldestProjects &&
+					{oldestProjects && oldestProjects.length !== 0 ? (
 						oldestProjects.map((project) => {
 							return (
 								<Link to={"/project/" + project.id} key={project.id}>
 									<ProjectSummary project={project} />
 								</Link>
 							);
-						})}
+						})
+					) : (
+						<div className="card z-depth-0 project-summary">
+							<div className="card-content purple-text text-darken-3">
+								<span className="card-title">No Projects Founded 😢</span>
+							</div>
+						</div>
+					)}
 				</Tab>
 				<Tab
 					options={{
@@ -92,14 +105,21 @@ const ProjectsList = ({ projects, auth }) => {
 					}}
 					title="Newst"
 				>
-					{newestProjects &&
+					{newestProjects && newestProjects.length !== 0 ? (
 						newestProjects.map((project) => {
 							return (
 								<Link to={"/project/" + project.id} key={project.id}>
 									<ProjectSummary project={project} />
 								</Link>
 							);
-						})}
+						})
+					) : (
+						<div className="card z-depth-0 project-summary">
+							<div className="card-content purple-text text-darken-3">
+								<span className="card-title">No Projects Founded 😢</span>
+							</div>
+						</div>
+					)}
 				</Tab>
 			</Tabs>
 		</div>

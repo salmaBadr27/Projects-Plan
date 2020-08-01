@@ -52,6 +52,30 @@ export const deleteProject = (projectId) => {
 			});
 	};
 };
+export const editProject = (projectId, project) => {
+	return (dispatch, getState, { getFirebase, getFirestore }) => {
+		const fireStoreRef = getFirestore();
+		const authorId = getState().firebase.auth.uid;
+		const projects = getState().firestore.data.projects;
+
+		console.log("projid", projectId);
+		console.log("authid", authorId);
+
+		fireStoreRef
+			.collection("projects")
+			.doc(projectId)
+			.update({
+				details: project.details,
+				title: project.title,
+			})
+			.then(() => {
+				dispatch({ type: "EDIT_PROJECT_SUCCESS", projects });
+			})
+			.catch((error) => {
+				dispatch({ type: "EDIT_PROJECT_ERROR", error });
+			});
+	};
+};
 export const searchProject = (searchTerm) => {
 	return (dispatch, getState, { getFirebase, getFirestore }) => {
 		const fireStoreRef = getFirestore();
